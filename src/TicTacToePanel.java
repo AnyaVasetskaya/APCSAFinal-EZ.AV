@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TicTacToePanel extends JPanel implements ActionListener {
+public class TicTacToePanel extends JFrame implements ActionListener {
     private Player p;
     private TicTacToeGame controller;
     private SpringLayout panelLayout;
@@ -16,6 +16,7 @@ public class TicTacToePanel extends JPanel implements ActionListener {
     private JButton tile8;
     private JButton tile9;
     private JButton startAgainButton;
+    private JPanel mainPanel;
 
     public TicTacToePanel(TicTacToeGame controllerRef) {
         super();
@@ -26,15 +27,6 @@ public class TicTacToePanel extends JPanel implements ActionListener {
 
     public void setupPanel() {
         setLayout(panelLayout);
-        add(tile1);
-        add(tile2);
-        add(tile3);
-        add(tile4);
-        add(tile5);
-        add(tile6);
-        add(tile7);
-        add(tile8);
-        add(tile9);
     }
 
     private void updateScreen(String tile) {
