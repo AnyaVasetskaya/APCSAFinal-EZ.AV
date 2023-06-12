@@ -13,7 +13,7 @@ public class TicTacToeGame {
     private Player player;
     private Player ai;
 
-    private TicTacToeFrame gameWindow;
+    private ActualTicTacToeFrame gameWindow;
 
     public TicTacToeGame() {
         t1 = new Tile ("corner", 1);
@@ -25,17 +25,34 @@ public class TicTacToeGame {
         t7 = new Tile ("corner", 7);
         t8 = new Tile ("edge", 8);
         t9 = new Tile ("corner", 9);
-        gameWindow = new TicTacToeFrame(this);
+        player = new Player();
+        ai = new Player();
+        gameWindow = new ActualTicTacToeFrame(this);
     }
 
     public void play() {
-        gameWindow.replaceScreen("game"); //gameWindow is the frame
+        gameWindow.replaceScreen();
     }
 
+    public boolean getPlayerWin() {
+        return player.getWin();
+    }
 
-    public void aiMove() {
+    public boolean getAIWin() {
+        return ai.getWin();
+    }
+
+    public String getPlayerSymbol() {
+        return gameWindow.getPlayerSymbol();
+    }
+
+    public String getAISymbol() {
+        return getPlayerSymbol().equals("X") ? "O" : "X";
+    }
+
+    public int aiMove() {
         //next move
-        Tile next;
+        Tile next = null;
         int pathToBlock = 0;
         //check win first
         int check = checkWin();
@@ -44,7 +61,7 @@ public class TicTacToeGame {
             ai.setWin(true);
         } else {
             //get every tile with player
-            ArrayList playerPlace = new ArrayList();
+            ArrayList<Tile> playerPlace = new ArrayList<Tile>();
             for (int i = 1; i <= 9; i++) {
                 if (i == 1 && t1.getTaken().equals("player")) {
                     playerPlace.add(t1);
@@ -75,8 +92,7 @@ public class TicTacToeGame {
                 }
             }
             //check for danger
-            for (int i = 0; i < playerPlace.size(); i++) {
-                Tile temp = (Tile) playerPlace.get(i);
+            for (Tile temp : playerPlace) {
                 int num = 0;
                 pathToBlock = 0;
                 num = checkHorizontal(temp);
@@ -190,6 +206,7 @@ public class TicTacToeGame {
                 }
             }
         }
+        return next.getPlace();
     }
 
     private int checkWin() {
@@ -313,6 +330,27 @@ public class TicTacToeGame {
         }
         return count;
     }
+
+    public void setPlayerOrAITaken(int t, String who) {
+        if (t == 1)
+            t1.setTaken(who);
+        else if (t == 2)
+            t2.setTaken(who);
+        else if (t == 3)
+            t3.setTaken(who);
+        else if (t == 4)
+            t4.setTaken(who);
+        else if (t == 5)
+            t5.setTaken(who);
+        else if (t == 6)
+            t6.setTaken(who);
+        else if (t == 7)
+            t7.setTaken(who);
+        else if (t == 8)
+            t8.setTaken(who);
+        else if (t == 9)
+            t9.setTaken(who);
+    }
     private int checkHorizontal(Tile t) {
         int num = t.getPlace();
         int path = 0;
@@ -404,7 +442,7 @@ public class TicTacToeGame {
     private int checkDiagonal(Tile t) {
         int num = t.getPlace();
         int path = 0;
-        if (num == 1 || num == 5 ||num == 9) {      //dia 1
+        if (num == 1 || num == 5 || num == 9) {      //dia 1
             if (!t1.getTaken().equals("ai") && !t5.getTaken().equals("ai") && !t9.getTaken().equals("ai")) {        //not blocked
                 if (t1.getPlace() != num && t1.getTaken().equals("player")) {
                     path = 7; //path 7

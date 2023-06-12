@@ -2,10 +2,8 @@ public class Player {
     private String symbol;
     private boolean win;
 
-    private static Homepage h = new Homepage(new TicTacToeGame());
-
-    public Player(String symbol) {
-        symbol = h.getSymbol();
+    public Player() {
+        symbol = "";
         win = false;
     }
 
