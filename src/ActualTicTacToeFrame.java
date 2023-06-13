@@ -34,6 +34,8 @@ public class ActualTicTacToeFrame extends JFrame implements ActionListener {
         return homepage.getSymbol();
     }
 
+    public String getAISymbol() { return homepage.getAISymbol(); }
+
     public void replaceScreen() {
         cardLayout.show(mainPanel, "game");
     }
