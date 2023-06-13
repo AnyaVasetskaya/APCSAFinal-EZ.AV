@@ -18,7 +18,6 @@ public class TicTacToePanel extends JPanel implements ActionListener {
     private JButton tile7;
     private JButton tile8;
     private JButton tile9;
-    //private JButton startOver
     private ImageIcon pSymbol;
     private ImageIcon aiSymbol;
     private ImageIcon happrabbit;
@@ -77,7 +76,6 @@ public class TicTacToePanel extends JPanel implements ActionListener {
         wilbursmug = new ImageIcon(scaledWilburPic);
         aiSymbol = wilbursmug;
 
-        //startOver = new JButton("Start Over");
         setLayout(panelLayout);
         add(tile1);
         add(tile2);
@@ -88,7 +86,6 @@ public class TicTacToePanel extends JPanel implements ActionListener {
         add(tile7);
         add(tile8);
         add(tile9);
-        //add(startOver);
     }
 
     private void updateScreenPlayerMove(String tile) {
@@ -97,55 +94,46 @@ public class TicTacToePanel extends JPanel implements ActionListener {
             if (tile.contains("1")) {
                 tile1.setIcon(pSymbol);
                 tile1.setText("");
-                //tile1.setFont(new Font("Courier", Font.BOLD,100));
                 tile1.setEnabled(false);
                 controller.setPlayerOrAITaken(1, "player");
             } else if (tile.contains("2")) {
                 tile2.setIcon(pSymbol);
                 tile2.setText("");
-                //tile2.setFont(new Font("Courier", Font.BOLD,100));
                 tile2.setEnabled(false);
                 controller.setPlayerOrAITaken(2, "player");
             } else if (tile.contains("3")) {
                 tile3.setIcon(pSymbol);
                 tile3.setText("");
-                //tile3.setFont(new Font("Courier", Font.BOLD,100));
                 tile3.setEnabled(false);
                 controller.setPlayerOrAITaken(3, "player");
             } else if (tile.contains("4")) {
                 tile4.setIcon(pSymbol);
                 tile4.setText("");
-                //tile4.setFont(new Font("Courier", Font.BOLD,100));
                 tile4.setEnabled(false);
                 controller.setPlayerOrAITaken(4, "player");
             } else if (tile.contains("5")) {
                 tile5.setIcon(pSymbol);
                 tile5.setText("");
-                //tile5.setFont(new Font("Courier", Font.BOLD,100));
                 tile5.setEnabled(false);
                 controller.setPlayerOrAITaken(5, "player");
             } else if (tile.contains("6")) {
                 tile6.setIcon(pSymbol);
                 tile6.setText("");
-                //tile6.setFont(new Font("Courier", Font.BOLD,100));
                 tile6.setEnabled(false);
                 controller.setPlayerOrAITaken(6, "player");
             } else if (tile.contains("7")) {
                 tile7.setIcon(pSymbol);
                 tile7.setText("");
-                //tile7.setFont(new Font("Courier", Font.BOLD,100));
                 tile7.setEnabled(false);
                 controller.setPlayerOrAITaken(7, "player");
             } else if (tile.contains("8")) {
                 tile8.setIcon(pSymbol);
                 tile8.setText("");
-                //tile8.setFont(new Font("Courier", Font.BOLD,100));
                 tile8.setEnabled(false);
                 controller.setPlayerOrAITaken(8, "player");
             } else if (tile.contains("9")) {
                 tile9.setIcon(pSymbol);
                 tile9.setText("");
-                //tile9.setFont(new Font("Courier", Font.BOLD,100));
                 tile9.setEnabled(false);
                 controller.setPlayerOrAITaken(9, "player");
             }
@@ -216,7 +204,6 @@ public class TicTacToePanel extends JPanel implements ActionListener {
         tile7.addActionListener(this);
         tile8.addActionListener(this);
         tile9.addActionListener(this);
-        //startOver.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -228,13 +215,8 @@ public class TicTacToePanel extends JPanel implements ActionListener {
             System.out.println("tile clicked");
             updateScreenPlayerMove(text);
             updateScreenAIMove();
+            if (controller.getPlayerWin() || controller.getAIWin())
+                controller.play();
         }
-//            } else if (text.equals("Start Over")) {
-//                //controller.reset();
-//                controller = new TicTacToeGame();
-//            }
     }
-
-
-    //button.newPreference(setDimension)
 }

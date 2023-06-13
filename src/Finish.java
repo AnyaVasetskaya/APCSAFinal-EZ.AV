@@ -2,17 +2,34 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Finish extends JPanel {
-    private JLabel finish;
+    private TicTacToeGame controller;
+    private SpringLayout panelLayout;
+    private JButton text;
+    private ImageIcon lose;
+    private ImageIcon win;
 
-    public Finish(TicTacToeGame controller) {
-        finish = new JLabel();
+    public Finish(TicTacToeGame controllerRef) {
+        controller = controllerRef;
+        panelLayout = new SpringLayout();
+        text = new JButton();
+
+        lose = new ImageIcon("src//lose.png");
+        Image losePic = lose.getImage();
+        Image scaledLosePic = losePic.getScaledInstance(900, 900, Image.SCALE_SMOOTH);
+        lose = new ImageIcon(scaledLosePic);
+
+        win = new ImageIcon("src//win.png");
+        Image winPic = win.getImage();
+        Image scaledWinPic = winPic.getScaledInstance(900, 900, Image.SCALE_SMOOTH);
+        win = new ImageIcon(scaledWinPic);
+
         if (controller.getPlayerWin()) {
-            finish.setText("You have won this time, fool! It shan't happen again!");
+            text = new JButton(win);
         } else if (controller.getAIWin()) {
-            finish.setText("You lose! Better luck next time, human!");
+            text = new JButton(lose);
         }
-        finish.setFont(new Font("Courier", Font.BOLD,40));
-        finish.setSize(900,900);
-        add(finish);
+
+        setLayout(panelLayout);
+        add(text);
     }
 }

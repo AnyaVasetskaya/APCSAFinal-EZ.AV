@@ -38,12 +38,13 @@ public class ActualTicTacToeFrame extends JFrame implements ActionListener {
     }
 
     public void replaceScreen() {
-        cardLayout.show(mainPanel, "game");
+        if (game.getAIWin() || game.getPlayerWin())
+            cardLayout.show(mainPanel, "finish");
+        else
+            cardLayout.show(mainPanel, "game");
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if (game.getAIWin() || game.getPlayerWin())
-            cardLayout.show(mainPanel, "finish");
         cardLayout.show(mainPanel, "game");
     }
 }
