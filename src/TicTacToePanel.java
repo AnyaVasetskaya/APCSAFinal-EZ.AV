@@ -22,21 +22,14 @@ public class TicTacToePanel extends JPanel implements ActionListener {
     private ImageIcon pSymbol;
     private ImageIcon aiSymbol;
     private ImageIcon happrabbit;
-    private ImageIcon happcatt;
+    private ImageIcon grumpcatt;
+    private ImageIcon corgiwoof;
+    private ImageIcon wilbursmug;
 
     public TicTacToePanel(TicTacToeGame controllerRef) {
         super();
         controller = controllerRef;
         panelLayout = new GridLayout(3, 3);
-
-        happrabbit = new ImageIcon("src//happrabbit.png");
-        Image rabbitPic = happrabbit.getImage();
-        Image scaledRabbitPic = rabbitPic.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-        happrabbit = new ImageIcon(scaledRabbitPic);
-        happcatt = new ImageIcon("src//happcatt.png");
-        Image cattPic = happcatt.getImage();
-        Image scaledCattPic = cattPic.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-        happcatt = new ImageIcon(scaledCattPic);
 
         setupPanel();
         setupListeners();
@@ -44,11 +37,11 @@ public class TicTacToePanel extends JPanel implements ActionListener {
 
     public void setupSymbols() {
         if (controller.getPlayerSymbol().equals("catt")) {
-            pSymbol = happcatt;
-            aiSymbol = happrabbit;
-        } else {
+            pSymbol = grumpcatt;
+        } else if (controller.getPlayerSymbol().equals("rabbit")) {
             pSymbol = happrabbit;
-            aiSymbol = happcatt;
+        } else {
+            pSymbol = corgiwoof;
         }
     }
 
@@ -62,6 +55,28 @@ public class TicTacToePanel extends JPanel implements ActionListener {
         tile7 = new JButton("Tile 7!");
         tile8 = new JButton("Tile 8!");
         tile9 = new JButton("Tile 9!");
+
+        happrabbit = new ImageIcon("src//happrabbit.png");
+        Image rabbitPic = happrabbit.getImage();
+        Image scaledRabbitPic = rabbitPic.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        happrabbit = new ImageIcon(scaledRabbitPic);
+
+        grumpcatt = new ImageIcon("src//grumpcatt.png");
+        Image cattPic = grumpcatt.getImage();
+        Image scaledCattPic = cattPic.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        grumpcatt = new ImageIcon(scaledCattPic);
+
+        corgiwoof = new ImageIcon("src//corgiwoof.png");
+        Image corgiPic = corgiwoof.getImage();
+        Image scaledCorgiPic = corgiPic.getScaledInstance(350, 350, Image.SCALE_SMOOTH);
+        corgiwoof = new ImageIcon(scaledCorgiPic);
+
+        wilbursmug = new ImageIcon("src//wilbursmug.png");
+        Image wilburPic = wilbursmug.getImage();
+        Image scaledWilburPic = wilburPic.getScaledInstance(350,  350, Image.SCALE_SMOOTH);
+        wilbursmug = new ImageIcon(scaledWilburPic);
+        aiSymbol = wilbursmug;
+
         //startOver = new JButton("Start Over");
         setLayout(panelLayout);
         add(tile1);

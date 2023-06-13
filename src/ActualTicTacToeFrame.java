@@ -9,6 +9,7 @@ public class ActualTicTacToeFrame extends JFrame implements ActionListener {
     private TicTacToeGame game;
     private Homepage homepage;
     private TicTacToePanel gamePanel;
+    private Finish finish;
 
     public ActualTicTacToeFrame(TicTacToeGame game) {
         JFrame frame = new JFrame();
@@ -19,9 +20,11 @@ public class ActualTicTacToeFrame extends JFrame implements ActionListener {
 
         homepage = new Homepage(game);
         gamePanel = new TicTacToePanel(game);
+        finish = new Finish(game);
 
         mainPanel.add("home", homepage);
         mainPanel.add("game", gamePanel);
+        mainPanel.add("finish", finish);
         cardLayout.show(mainPanel, "home");
 
         frame.add(mainPanel);
@@ -34,19 +37,13 @@ public class ActualTicTacToeFrame extends JFrame implements ActionListener {
         return homepage.getSymbol();
     }
 
-    public String getAISymbol() { return homepage.getAISymbol(); }
-
     public void replaceScreen() {
         cardLayout.show(mainPanel, "game");
     }
 
     public void actionPerformed(ActionEvent ae) {
-//        Object source = ae.getSource();
-//        JButton clickedButton = (JButton) source;
-//        String text = clickedButton.getText();
+        if (game.getAIWin() || game.getPlayerWin())
+            cardLayout.show(mainPanel, "finish");
         cardLayout.show(mainPanel, "game");
-//      if (text.equals("Start Over")) {
-//
-//      }
     }
 }
