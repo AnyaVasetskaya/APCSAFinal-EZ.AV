@@ -22,7 +22,7 @@ public class Homepage extends JPanel implements ActionListener {
         super();
         controller = controllerRef;
         panelLayout = new SpringLayout();
-        welcome = new JLabel("Welcome to Tic Tac Autoe! Choose X / O to start:");
+        welcome = new JLabel("Welcome to Tic Tac Autoe! Choose an avatar to start:");
         welcome.setFont(new Font("Courier", Font.BOLD,28));
 
         happrabbit = new ImageIcon("src//happrabbit.png");
@@ -61,13 +61,13 @@ public class Homepage extends JPanel implements ActionListener {
 
     private void setupLayout() {
         panelLayout.putConstraint(SpringLayout.NORTH, welcome, 100, SpringLayout.NORTH, this);
-        panelLayout.putConstraint(SpringLayout.WEST, welcome, 70, SpringLayout.WEST, this);
+        panelLayout.putConstraint(SpringLayout.WEST, welcome, 15, SpringLayout.WEST, this);
         panelLayout.putConstraint(SpringLayout.NORTH, cattButton, 300, SpringLayout.NORTH, this);
-        panelLayout.putConstraint(SpringLayout.WEST, cattButton, 75, SpringLayout.WEST, this);
+        panelLayout.putConstraint(SpringLayout.WEST, cattButton, 25, SpringLayout.WEST, this);
         panelLayout.putConstraint(SpringLayout.NORTH, rabbitButton, 300, SpringLayout.NORTH, this);
-        panelLayout.putConstraint(SpringLayout.WEST, rabbitButton, 375, SpringLayout.WEST, this);
+        panelLayout.putConstraint(SpringLayout.WEST, rabbitButton, 300, SpringLayout.WEST, this);
         panelLayout.putConstraint(SpringLayout.NORTH, corgiButton, 300, SpringLayout.NORTH, this);
-        panelLayout.putConstraint(SpringLayout.WEST, corgiButton, 675, SpringLayout.WEST, this);
+        panelLayout.putConstraint(SpringLayout.WEST, corgiButton, 600, SpringLayout.WEST, this);
     }
 
     private void setupListeners() {

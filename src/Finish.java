@@ -6,28 +6,19 @@ public class Finish extends JPanel {
     private SpringLayout panelLayout;
     private JButton text;
     private ImageIcon lose;
-    private ImageIcon win;
+    private ImageIcon gg;
 
     public Finish(TicTacToeGame controllerRef) {
         controller = controllerRef;
         panelLayout = new SpringLayout();
         text = new JButton();
 
-        lose = new ImageIcon("src//lose.png");
-        Image losePic = lose.getImage();
-        Image scaledLosePic = losePic.getScaledInstance(900, 900, Image.SCALE_SMOOTH);
-        lose = new ImageIcon(scaledLosePic);
+        gg = new ImageIcon("src//gghumanz.png");
+        Image ggPic = gg.getImage();
+        Image scaledGGPic = ggPic.getScaledInstance(900, 900, Image.SCALE_SMOOTH);
+        gg = new ImageIcon(scaledGGPic);
 
-        win = new ImageIcon("src//win.png");
-        Image winPic = win.getImage();
-        Image scaledWinPic = winPic.getScaledInstance(900, 900, Image.SCALE_SMOOTH);
-        win = new ImageIcon(scaledWinPic);
-
-        if (controller.getPlayerWin()) {
-            text = new JButton(win);
-        } else if (controller.getAIWin()) {
-            text = new JButton(lose);
-        }
+        text = new JButton(gg);
 
         setLayout(panelLayout);
         add(text);

@@ -211,12 +211,10 @@ public class TicTacToePanel extends JPanel implements ActionListener {
         JButton clickedButton = (JButton) source;
         String text = clickedButton.getText();
 
-        if (text.contains("Tile")) {
-            System.out.println("tile clicked");
-            updateScreenPlayerMove(text);
-            updateScreenAIMove();
-            if (controller.getPlayerWin() || controller.getAIWin())
-                controller.play();
-        }
+        System.out.println("tile clicked");
+        updateScreenPlayerMove(text);
+        updateScreenAIMove();
+        if (controller.getPlayerWin() || controller.getAIWin())
+            controller.play();
     }
 }
